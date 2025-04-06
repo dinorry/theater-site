@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Install required packages
-sudo apt update && sudo apt install -y nginx git
+sudo apt update && sudo apt install -y nginx
 
 # copy website files
 sudo cp -r mavorv.org /var/www

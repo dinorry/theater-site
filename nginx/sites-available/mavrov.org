@@ -1,0 +1,61 @@
+server {
+    server_name mavrov.org www.mavrov.org;
+
+    root /var/www/mavrov.org;
+    index index.html;
+
+    # Handle audio file streaming
+    location /audio/ {
+        alias /var/www/mavrov.org/audio/;
+        types {
+            audio/mpeg mp3;
+            audio/ogg  ogg;
+            audio/wav  wav;
+        }
+        add_header 'Access-Control-Allow-Origin' '*';
+        add_header 'Access-Control-Allow-Methods' 'GET, OPTIONS';
+        expires 30d;
+        access_log off;
+    }
+
+    # Main website files
+    location / {
+        try_files $uri $uri/ =404;
+        expires 30d;
+    }
+    # Getting rid of .html
+    location ~* ^/([^/]+)$ {
+    rewrite ^/(.*)$ /$1.html break;
+    }
+    # Security headers
+    add_header X-Frame-Options "SAMEORIGIN";
+    add_header X-XSS-Protection "1; mode=block";
+    add_header X-Content-Type-Options "nosniff";
+
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/mavrov.org/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/mavrov.org/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+
+}
+server {
+    if ($host = www.mavrov.org) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+    if ($host = mavrov.org) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+    listen 80;
+    server_name mavrov.org www.mavrov.org;
+    return 404; # managed by Certbot
+
+
+
+
+}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alles ist wahrhaftig</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fdf6ef;
+            text-align: center;
+            padding: 50px;
+        }
+        h1 {
+            color: #3c2a4d;
+            margin-bottom: 40px;
+        }
+        .icon-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        .icon-container a {
+            text-decoration: none;
+            display: inline-flex;
+            width: 100px;
+            height: 100px;
+            background-color: #e8d9c4;
+            border-radius: 20px;
+            padding: 15px;
+            transition: transform 0.2s;
+        }
+        .icon-container a:hover {
+            transform: scale(1.1);
+        }
+        .icon-container img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body>
+<h1>Nichts ist wahr</h1>
+<div class="icon-container">
+    <a href="#" data-site="Kap1">
+        <img src="icons/triangle.png">
+    </a>
+    <a href="#" data-site="Kap2">
+        <img src="icons/chair.png">
+    </a>
+    <a href="#" data-site="Kap3">
+        <img src="icons/cloud.png">
+    </a>
+    <a href="#" data-site="Kap4">
+        <img src="icons/radio.png">
+    </a>
+    <a href="#" data-site="Kap5">
+        <img src="icons/micro.png">
+    </a>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const links = document.querySelectorAll(".icon-container a");
+        links.forEach(link => {
+            const site = link.getAttribute("data-site");
+            link.href = `index.html?site=${site}`;
+        });
+    });
+</script>
+</body>
+</html>

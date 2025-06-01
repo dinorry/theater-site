@@ -4,7 +4,7 @@
 sudo apt update && sudo apt install -y nginx
 
 # copy website files
-sudo cp -r mavorv.org /var/www
+sudo cp -r lost-and-found.me /var/www
 
 # Restore NGINX config
 sudo cp -r nginx/sites-available /etc/nginx/

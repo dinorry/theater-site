@@ -1,12 +1,12 @@
 server {
-    server_name mavrov.org www.mavrov.org;
+    server_name lost-and-found.me www.lost-and-found.me;
 
-    root /var/www/mavrov.org;
+    root /var/www/lost-and-found.me;
     index index.html;
 
     # Handle audio file streaming
     location /audio/ {
-        alias /var/www/mavrov.org/audio/;
+        alias /var/www/lost-and-found.me/audio/;
         types {
             audio/mpeg mp3;
             audio/ogg  ogg;
@@ -35,18 +35,18 @@ server {
 
 }
 server {
-    if ($host = www.mavrov.org) {
+    if ($host = www.lost-and-found.me) {
         return 301 https://$host$request_uri;
     } # managed by Certbot
 
 
-    if ($host = mavrov.org) {
+    if ($host = lost-and-found.me) {
         return 301 https://$host$request_uri;
     } # managed by Certbot
 
 
     listen 80;
-    server_name mavrov.org www.mavrov.org;
+    server_name lost-and-found.me www.lost-and-found.me;
     return 404; # managed by Certbot
 
 

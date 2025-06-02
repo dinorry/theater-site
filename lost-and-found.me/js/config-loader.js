@@ -5,23 +5,38 @@ function applyConfiguration() {
   document.getElementById("site-name").textContent = window.siteConfig.siteName;
   // Set audio properties
   document.getElementById("audio-title").textContent =
-    window.siteConfig.audioTitle;
+      window.siteConfig.audioTitle;
   document.getElementById("audio-source").src = window.siteConfig.audioFile;
   document.getElementById("audio-player").load(); // Important to reload after changing source
 
   // Set background
   document.documentElement.style.setProperty(
-    "--background-image",
-    `url('${window.siteConfig.backgroundImage}')`,
+      "--background-image",
+      `url('${window.siteConfig.backgroundImage}')`,
   );
   document.documentElement.style.setProperty(
-    "--background-blur",
-    window.siteConfig.backgroundBlur,
+      "--background-blur",
+      window.siteConfig.backgroundBlur,
   );
   document.documentElement.style.setProperty(
-    "--background-brightness",
-    window.siteConfig.backgroundBrightness,
+      "--background-brightness",
+      window.siteConfig.backgroundBrightness,
   );
+
+  // Add button functionality
+  const audioPlayer = document.getElementById("audio-player");
+  const loopButton = document.getElementById("customButton");
+
+  loopButton.addEventListener("click", () => {
+    // Toggle the loop property of the audio player
+    audioPlayer.loop = !audioPlayer.loop;
+
+    // Temporarily apply the "pressed" class to the button
+    loopButton.classList.add("pressed");
+    setTimeout(() => {
+      loopButton.classList.remove("pressed");
+    }, 200); // Remove the class after 200ms
+  });
 }
 
 // Wait for the DOM to be fully loaded

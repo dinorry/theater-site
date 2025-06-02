@@ -77,6 +77,24 @@ audio::-webkit-media-controls-panel {
     background-color: rgba(255, 255, 255, 0.2);
 }
 
+.image-button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.image-button img {
+    width: 50px; /* Adjust size as needed */
+    height: 50px;
+    object-fit: contain;
+}
+
+.image-button img:hover {
+    transform: scale(1.1); /* Optional hover effect */
+    transition: transform 0.2s;
+}
+
 footer {
     text-align: center;
     padding: 1rem;

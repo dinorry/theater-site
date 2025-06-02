@@ -8,7 +8,7 @@ sudo cp -r lost-and-found.me /var/www
 
 # Restore NGINX config
 sudo cp -r nginx/sites-available /etc/nginx/
-sudo cp -r nginx/sites-enabled /etc/nginx/
+sudo ln -s /etc/nginx/sites-available/lost-and-found.me /etc/nginx/sites-enabled/
 sudo cp nginx/nginx.conf /etc/nginx/nginx.conf
 
 # Restart NGINX

@@ -3,9 +3,6 @@ function applyConfiguration() {
   // Set site title
   document.title = window.siteConfig.siteName;
   document.getElementById("site-name").textContent = window.siteConfig.siteName;
-  document.getElementById("footer-site-name").textContent =
-    window.siteConfig.siteName;
-
   // Set audio properties
   document.getElementById("audio-title").textContent =
     window.siteConfig.audioTitle;

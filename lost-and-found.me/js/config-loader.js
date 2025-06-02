@@ -10,6 +10,7 @@ function applyConfiguration() {
   document.getElementById("audio-player").load(); // Important to reload after changing source
 
   // Set background
+
   document.documentElement.style.setProperty(
       "--background-image",
       `url('${window.siteConfig.backgroundImage}')`,
